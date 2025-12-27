@@ -1,0 +1,57 @@
+# Garak Configuration for LLM Red Team Lab
+# Garak is an LLM vulnerability scanner
+# https://github.com/leondz/garak
+
+# Target model configuration
+model:
+  type: "rest"
+  name: "Vulnerable RAG API"
+  uri: "http://localhost:8000/query"
+
+  # API configuration
+  request:
+    method: "POST"
+    headers:
+      Content-Type: "application/json"
+    json_template:
+      query: "{PROMPT}"
+
+  response:
+    path: "response"
+
+# Probe selection (which vulnerabilities to test)
+probes:
+  # Prompt injection probes
+  - promptinject
+  - continuation
+  - misleading
+
+  # Data leakage probes
+  - leakage.api_keys
+  - leakage.credentials
+
+  # Encoding-based attacks
+  - encoding
+  - base64
+
+  # Malicious use
+  - malware
+  - dan  # "Do Anything Now" jailbreak attempts
+
+# Detectors (how to evaluate responses)
+detectors:
+  - all  # Use all available detectors
+
+# Reporting
+reporting:
+  output_dir: "../evidence/garak"
+  format: ["json", "html"]
+  include_passed: false  # Only report failures/vulnerabilities
+
+# Execution settings
+run:
+  max_tokens: 512
+  temperature: 0.7
+  seed: 42
+  parallel_requests: 2
+  timeout: 60

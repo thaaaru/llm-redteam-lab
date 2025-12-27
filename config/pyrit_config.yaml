@@ -1,0 +1,58 @@
+# PyRIT Configuration for LLM Red Team Lab
+# Note: PyRIT is evolving rapidly - adjust based on installed version
+
+target:
+  name: "Vulnerable RAG API"
+  endpoint: "http://localhost:8000/query"
+  type: "rest_api"
+
+  # API parameters
+  request_format: "json"
+  payload_field: "query"
+  response_field: "response"
+
+  # Timeouts and retries
+  timeout: 120
+  max_retries: 3
+  retry_delay: 2
+
+# Attack configuration
+attacks:
+  prompt_injection:
+    enabled: true
+    variations: 10
+    temperature: 0.7
+
+  system_override:
+    enabled: true
+    variations: 5
+
+  data_exfiltration:
+    enabled: true
+    target_data:
+      - "employee records"
+      - "API keys"
+      - "passwords"
+      - "SSN"
+
+  policy_bypass:
+    enabled: true
+    policies:
+      - "data_access"
+      - "confidentiality"
+
+  jailbreak:
+    enabled: true
+    chain_length: 3
+
+# Logging
+logging:
+  enabled: true
+  level: "INFO"
+  output_dir: "../evidence"
+  format: "jsonl"
+
+# Rate limiting (to avoid overwhelming local system)
+rate_limit:
+  requests_per_second: 2
+  burst: 5

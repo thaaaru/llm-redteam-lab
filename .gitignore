@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# Evidence and logs (sensitive data)
+evidence/*.json
+evidence/*.log
+evidence/*.txt
+!evidence/README.md
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Tor data
+tor-data/
+
+# Ollama models (large files)
+*.gguf
+*.bin
+models/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+logs/

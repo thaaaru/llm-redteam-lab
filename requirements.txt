@@ -1,0 +1,33 @@
+# LLM Red Team Lab - Core Dependencies
+# Python 3.11+
+
+# HTTP client for Ollama API
+requests==2.31.0
+httpx==0.25.2
+
+# Async support
+aiohttp==3.9.1
+
+# CLI utilities
+click==8.1.7
+rich==13.7.0
+colorama==0.4.6
+
+# Data handling
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Logging and monitoring
+structlog==24.1.0
+python-json-logger==2.0.7
+
+# Configuration
+python-dotenv==1.0.0
+PyYAML==6.0.1
+
+# Database
+sqlalchemy==2.0.25
+
+# Testing utilities
+pytest==7.4.3
+pytest-asyncio==0.21.1

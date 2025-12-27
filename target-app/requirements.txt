@@ -1,0 +1,14 @@
+# Target Application Dependencies
+# Intentionally vulnerable RAG application for red team testing
+
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+requests==2.31.0
+
+# For RAG functionality
+chromadb==0.4.22
+sentence-transformers==2.3.1
+
+# Utilities
+python-dotenv==1.0.0
