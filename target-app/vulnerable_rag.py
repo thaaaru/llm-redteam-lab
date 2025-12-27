@@ -10,6 +10,13 @@ This RAG system has multiple vulnerabilities:
 5. Debug mode accessible via prompt injection
 """
 
+# SQLite compatibility fix for Ubuntu 20.04
+# ChromaDB requires SQLite 3.35+, Ubuntu 20.04 has 3.31
+# This patches the sqlite3 module to use pysqlite3-binary instead
+__import__("pysqlite3")
+import sys
+sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+
 import requests
 from typing import List, Dict, Optional
 import chromadb
